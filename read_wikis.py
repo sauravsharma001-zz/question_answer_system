@@ -62,21 +62,11 @@ class LoadWikis:
             pos = nltk.pos_tag(word)
             self.words.extend(word)
             self.pos_tag[sentence] = pos
-            print(sentence, pos)
-            print()
+            # print(sentence, pos)
+            # print()
         
     def extract_lemmas(self):
         for word in self.words:
             wf = WordFeature(word, nltk.pos_tag(word), self.stemmer.stem(word), self.lemmatizer.lemmatize(word), None, None)
             self.words_feature.append(wf)
             # print(wf.word, wf.tag, wf.lemma, wf.stem)
-            # print()
-
-
-if __name__ == "__main__":
-    folder = "data/articles"
-    l = LoadWikis(folder)
-    l.load_files()
-    l.split_file_in_sentence()
-    l.extract_token()
-    l.extract_lemmas()
